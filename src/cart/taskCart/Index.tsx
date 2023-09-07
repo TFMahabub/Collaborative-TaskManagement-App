@@ -17,8 +17,8 @@ const TaskCart = () => {
       </p>
       <div className="flex items-center justify-between">
         <p className="text-sm text-textColor/70">Due Date: 12/12/2023</p>
-        <PriorityStatusCart varient="medium" />
-        <StatusCart varient="inProgress" />
+        <PriorityStatusCart varient="low" />
+        <StatusCart varient="complete" />
       </div>
     </div>
   );

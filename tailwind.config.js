@@ -7,9 +7,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        primar: '#14b4a0',
+        primary: '#14b4a0',
         borderColor: '#e6e6e6',
         textColor: '#1f1f1f'
+      },
+      spacing: {
+        navbarHeight: '4rem',
+        sectionGap: '1rem'
       }
     },
   },
