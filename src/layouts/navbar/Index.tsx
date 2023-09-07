@@ -11,7 +11,7 @@ const Navbar = () => {
         </h1>
         <ul className="flex items-center gap-6">
           <li className="text-base font-medium hover:text-primary duration-200">
-            <Link to={"/home"}>Home</Link>
+            <Link to={"/"}>Home</Link>
           </li>
           {user ? (
             <li>
