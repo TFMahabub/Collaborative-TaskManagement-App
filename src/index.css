@@ -1,2 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
+}
+
+body {
+}
+
+.container {
+  @apply px-2 lg:px-0 md:max-w-[840px] lg:max-w-[1240px] mx-auto;
 }
