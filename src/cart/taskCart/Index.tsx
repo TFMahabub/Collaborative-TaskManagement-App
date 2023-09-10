@@ -3,7 +3,7 @@ import StatusCart from "../statusCart/Index";
 
 const TaskCart = () => {
   return (
-    <div className="border border-borderColor p-4 rounded-md flex flex-col gap-4">
+    <div className="border-borderColor flex flex-col gap-4 p-4 bg-white border rounded-md">
       <h2 className="text-textColor text-lg font-semibold">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque optio
         corporis eum, cum error reiciendis.
@@ -16,7 +16,7 @@ const TaskCart = () => {
         necessitatibus corporis quis sint quasi officia?
       </p>
       <div className="flex items-center justify-between">
-        <p className="text-sm text-textColor/70">Due Date: 12/12/2023</p>
+        <p className="text-textColor/70 text-sm">Due Date: 12/12/2023</p>
         <PriorityStatusCart varient="low" />
         <StatusCart varient="complete" />
       </div>
