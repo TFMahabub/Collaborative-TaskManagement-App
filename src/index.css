@@ -6,9 +6,20 @@
 }
 
 body {
-  @apply text-textColor;
+  @apply text-textColor bg-slate-100;
 }
 
 .container {
   @apply px-2 lg:px-0 md:max-w-[840px] lg:max-w-[1240px] mx-auto;
+}
+
+.screenHeight {
+  @apply h-[calc(100vh-4rem)];
+}
+
+input:invalid[focused="true"] {
+  border: 1px solid red;
+}
+input:invalid[focused="true"] ~ span {
+  display: block;
 }

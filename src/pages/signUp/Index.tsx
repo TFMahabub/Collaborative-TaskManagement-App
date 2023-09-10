@@ -1,17 +1,28 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PrimaryButtonFull from "../../Utils/buttons/PrimaryButtonFull";
 import PrimaryInput from "../../Utils/inputs/PrimaryInput";
 import LargeText from "../../Utils/texts/LargeText";
-import { UsersProvider } from "../../contexts/usersContext";
 import usersData from "../../databases/userData";
 import { EventType, FormEventType } from "../../types/globalTypes";
 
-const UserLoginPage = () => {
-  const { setUserData } = useContext(UsersProvider);
-  const [value, setValue] = useState<{ email: string; password: string }>({
+interface UserType {
+  userUid: number | null;
+  userName: string;
+  email: string;
+  password: string;
+  profilePic: string;
+  bio: string;
+}
+
+const SignUpPage = () => {
+  const [value, setValue] = useState<UserType>({
+    userUid: null,
+    userName: "",
     email: "",
     password: "",
+    profilePic: "",
+    bio: "",
   });
 
   const navigate = useNavigate();
@@ -19,6 +30,14 @@ const UserLoginPage = () => {
   const inputs = [
     {
       id: 1,
+      name: "userName",
+      type: "text",
+      placeholder: "User Name",
+      label: "User Name",
+      required: true,
+    },
+    {
+      id: 2,
       name: "email",
       type: "email",
       placeholder: "Email",
@@ -26,7 +45,7 @@ const UserLoginPage = () => {
       required: true,
     },
     {
-      id: 2,
+      id: 3,
       name: "password",
       type: "password",
       placeholder: "Password",
@@ -37,25 +56,25 @@ const UserLoginPage = () => {
 
   const handleSubmit = (e: FormEventType) => {
     e.preventDefault();
-    const isHave = usersData?.find(
-      (user) =>
-        user?.email === value?.email && user?.password === value?.password
-    );
+    const lastUser = usersData[usersData.length - 1];
+    const isHave = usersData?.find((user) => user?.email === value?.email);
 
+    const formData = { ...value, userUid: lastUser?.userUid + 1 };
     if (isHave) {
-      setUserData!(isHave);
-      navigate("/");
+      alert("Already have this user :) Try with another email");
     } else {
-      alert("something went wrong try again");
+      usersData?.push(formData);
+      navigate("/login");
     }
   };
+
   return (
     <main className="screenHeight flex items-center justify-center">
       <form
         onSubmit={handleSubmit}
         className="border-borderColor p-8 space-y-4 bg-white border rounded-md shadow-md"
       >
-        <LargeText extraClass="text-center">Login</LargeText>
+        <LargeText extraClass="text-center">Sign Up</LargeText>
         {inputs?.map(({ label, id, ...rest }) => (
           <label
             htmlFor=""
@@ -64,10 +83,10 @@ const UserLoginPage = () => {
           >
             {label}
             <PrimaryInput
+              id={id}
               onChange={(e: EventType) =>
                 setValue({ ...value, [e.target.name]: e.target.value })
               }
-              id={id}
               {...rest}
             />
           </label>
@@ -78,4 +97,4 @@ const UserLoginPage = () => {
   );
 };
 
-export default UserLoginPage;
+export default SignUpPage;
