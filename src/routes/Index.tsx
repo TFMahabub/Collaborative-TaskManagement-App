@@ -30,10 +30,9 @@ const router = createBrowserRouter([
       {
         path: "/user_profile",
         element: (
-          <UserProfilePage />
-          // <PrivateRoute>
-          //   <UserProfilePage />
-          // </PrivateRoute>
+          <PrivateRoute>
+            <UserProfilePage />
+          </PrivateRoute>
         ),
       },
     ],

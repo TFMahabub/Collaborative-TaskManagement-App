@@ -1,14 +1,9 @@
-import React, {
-  Dispatch,
-  SetStateAction,
-  createContext,
-  useState,
-} from "react";
+import React, { createContext, useState } from "react";
 import { UserType } from "../types/userType";
 
 interface ValueType {
   userData: UserType;
-  setUserData: Dispatch<SetStateAction<UserType>>;
+  setUserData: any;
 }
 
 export const UsersProvider = createContext<Partial<ValueType>>({});
